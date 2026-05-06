@@ -366,5 +366,25 @@
       "inStock": true,
       "featured": true
     }
+  ],
+    "hero": [
+    {
+      "id": 1,
+      "image": "/images/bathroom.jpg",
+      "title": "Luxury Bathroom Design",
+      "subtitle": "Elegant tiles for modern living"
+    },
+    {
+      "id": 2,
+      "image": "/images/tile1.jpg",
+      "title": "Modern Tile Collection",
+      "subtitle": "Premium quality surfaces"
+    },
+    {
+      "id": 3,
+      "image": "/images/tile2.jpg",
+      "title": "Stylish Interiors",
+      "subtitle": "Make your home aesthetic"
+    }
   ]
 }
