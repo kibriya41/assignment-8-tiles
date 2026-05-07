@@ -10,7 +10,11 @@
       "currency": "USD",
       "dimensions": "60x60 cm",
       "material": "Ceramic",
-      "tags": ["blue", "glossy", "modern"],
+      "tags": [
+        "blue",
+        "glossy",
+        "modern"
+      ],
       "inStock": true,
       "featured": true
     },
@@ -24,7 +28,11 @@
       "currency": "USD",
       "dimensions": "60x60 cm",
       "material": "Marble",
-      "tags": ["luxury", "smooth", "grey"],
+      "tags": [
+        "luxury",
+        "smooth",
+        "grey"
+      ],
       "inStock": true,
       "featured": true
     },
@@ -38,7 +46,11 @@
       "currency": "USD",
       "dimensions": "50x50 cm",
       "material": "Ceramic",
-      "tags": ["geometric", "black", "modern"],
+      "tags": [
+        "geometric",
+        "black",
+        "modern"
+      ],
       "inStock": true,
       "featured": true
     },
@@ -52,7 +64,11 @@
       "currency": "USD",
       "dimensions": "60x60 cm",
       "material": "Ceramic",
-      "tags": ["green", "matte", "minimal"],
+      "tags": [
+        "green",
+        "matte",
+        "minimal"
+      ],
       "inStock": true,
       "featured": true
     },
@@ -66,11 +82,14 @@
       "currency": "USD",
       "dimensions": "30x30 cm",
       "material": "Porcelain",
-      "tags": ["white", "hexagon", "clean"],
+      "tags": [
+        "white",
+        "hexagon",
+        "clean"
+      ],
       "inStock": true,
       "featured": false
     },
-
     {
       "id": 6,
       "title": "Terrazzo Classic",
@@ -81,7 +100,10 @@
       "material": "Composite",
       "description": "Classic terrazzo style with colorful chips.",
       "image": "/images/tiles/tile_006.jpg",
-      "tags": ["terrazzo", "pattern"],
+      "tags": [
+        "terrazzo",
+        "pattern"
+      ],
       "inStock": true,
       "featured": false
     },
@@ -95,7 +117,10 @@
       "material": "Stone",
       "description": "Natural travertine tile with warm beige tone.",
       "image": "/images/tiles/tile_007.jpg",
-      "tags": ["beige", "natural"],
+      "tags": [
+        "beige",
+        "natural"
+      ],
       "inStock": true,
       "featured": false
     },
@@ -109,11 +134,13 @@
       "material": "Ceramic",
       "description": "Elegant navy tile in herringbone pattern.",
       "image": "/images/tiles/tile_008.jpg",
-      "tags": ["navy", "pattern"],
+      "tags": [
+        "navy",
+        "pattern"
+      ],
       "inStock": true,
       "featured": false
     },
-
     {
       "id": 9,
       "title": "Dark Slate Matte",
@@ -124,7 +151,10 @@
       "material": "Slate",
       "description": "Durable dark slate matte finish tile.",
       "image": "/images/tiles/tile_009.jpg",
-      "tags": ["dark", "matte"],
+      "tags": [
+        "dark",
+        "matte"
+      ],
       "inStock": true,
       "featured": false
     },
@@ -138,11 +168,13 @@
       "material": "Ceramic",
       "description": "Glossy ivory tile for bright interiors.",
       "image": "/images/tiles/tile_010.jpg",
-      "tags": ["ivory", "gloss"],
+      "tags": [
+        "ivory",
+        "gloss"
+      ],
       "inStock": true,
       "featured": false
     },
-
     {
       "id": 11,
       "title": "Rustic Wood Tile",
@@ -153,7 +185,10 @@
       "material": "Porcelain",
       "description": "Wood look tile with rustic texture.",
       "image": "/images/tiles/tile_011.jpg",
-      "tags": ["wood", "rustic"],
+      "tags": [
+        "wood",
+        "rustic"
+      ],
       "inStock": true,
       "featured": false
     },
@@ -167,11 +202,13 @@
       "material": "Marble",
       "description": "Luxury black marble polished tile.",
       "image": "/images/tiles/tile_012.jpg",
-      "tags": ["black", "luxury"],
+      "tags": [
+        "black",
+        "luxury"
+      ],
       "inStock": true,
       "featured": true
     },
-
     {
       "id": 13,
       "title": "Pastel Pink Tile",
@@ -182,11 +219,13 @@
       "material": "Ceramic",
       "description": "Soft pastel pink tile for elegant spaces.",
       "image": "/images/tiles/tile_013.jpg",
-      "tags": ["pink", "soft"],
+      "tags": [
+        "pink",
+        "soft"
+      ],
       "inStock": true,
       "featured": false
     },
-
     {
       "id": 14,
       "title": "Concrete Grey",
@@ -197,11 +236,13 @@
       "material": "Concrete",
       "description": "Industrial style concrete grey tile.",
       "image": "/images/tiles/tile_014.jpg",
-      "tags": ["industrial", "grey"],
+      "tags": [
+        "industrial",
+        "grey"
+      ],
       "inStock": true,
       "featured": false
     },
-
     {
       "id": 15,
       "title": "Blue Mosaic",
@@ -212,11 +253,13 @@
       "material": "Glass",
       "description": "Small blue mosaic tiles for walls.",
       "image": "/images/tiles/tile_015.jpg",
-      "tags": ["mosaic", "blue"],
+      "tags": [
+        "mosaic",
+        "blue"
+      ],
       "inStock": true,
       "featured": false
     },
-
     {
       "id": 16,
       "title": "Gold Accent Tile",
@@ -227,11 +270,13 @@
       "material": "Ceramic",
       "description": "Luxury gold accent tile for highlights.",
       "image": "/images/tiles/tile_016.jpg",
-      "tags": ["gold", "premium"],
+      "tags": [
+        "gold",
+        "premium"
+      ],
       "inStock": true,
       "featured": true
     },
-
     {
       "id": 17,
       "title": "Sky Blue Matte",
@@ -242,11 +287,13 @@
       "material": "Ceramic",
       "description": "Soft sky blue matte finish tile.",
       "image": "/images/tiles/tile_017.jpg",
-      "tags": ["sky", "calm"],
+      "tags": [
+        "sky",
+        "calm"
+      ],
       "inStock": true,
       "featured": false
     },
-
     {
       "id": 18,
       "title": "Dark Wood Finish",
@@ -257,11 +304,13 @@
       "material": "Porcelain",
       "description": "Dark wood texture porcelain tile.",
       "image": "/images/tiles/tile_018.jpg",
-      "tags": ["wood", "dark"],
+      "tags": [
+        "wood",
+        "dark"
+      ],
       "inStock": true,
       "featured": false
     },
-
     {
       "id": 19,
       "title": "Classic White Gloss",
@@ -272,11 +321,13 @@
       "material": "Ceramic",
       "description": "Classic glossy white tile.",
       "image": "/images/tiles/tile_019.jpg",
-      "tags": ["white", "classic"],
+      "tags": [
+        "white",
+        "classic"
+      ],
       "inStock": true,
       "featured": false
     },
-
     {
       "id": 20,
       "title": "Patterned Vintage",
@@ -287,11 +338,13 @@
       "material": "Ceramic",
       "description": "Vintage patterned tile design.",
       "image": "/images/tiles/tile_020.jpg",
-      "tags": ["vintage", "pattern"],
+      "tags": [
+        "vintage",
+        "pattern"
+      ],
       "inStock": true,
       "featured": false
     },
-
     {
       "id": 21,
       "title": "Emerald Green",
@@ -302,11 +355,13 @@
       "material": "Ceramic",
       "description": "Rich emerald green tile.",
       "image": "/images/tiles/tile_021.jpg",
-      "tags": ["green", "luxury"],
+      "tags": [
+        "green",
+        "luxury"
+      ],
       "inStock": true,
       "featured": false
     },
-
     {
       "id": 22,
       "title": "Light Sandstone",
@@ -317,11 +372,13 @@
       "material": "Stone",
       "description": "Light sandstone natural tile.",
       "image": "/images/tiles/tile_022.jpg",
-      "tags": ["sand", "natural"],
+      "tags": [
+        "sand",
+        "natural"
+      ],
       "inStock": true,
       "featured": false
     },
-
     {
       "id": 23,
       "title": "Charcoal Matte",
@@ -332,11 +389,13 @@
       "material": "Ceramic",
       "description": "Charcoal matte modern tile.",
       "image": "/images/tiles/tile_023.jpg",
-      "tags": ["charcoal", "modern"],
+      "tags": [
+        "charcoal",
+        "modern"
+      ],
       "inStock": true,
       "featured": false
     },
-
     {
       "id": 24,
       "title": "Glossy Cream",
@@ -347,11 +406,13 @@
       "material": "Ceramic",
       "description": "Smooth glossy cream tile.",
       "image": "/images/tiles/tile_024.jpg",
-      "tags": ["cream", "soft"],
+      "tags": [
+        "cream",
+        "soft"
+      ],
       "inStock": true,
       "featured": false
     },
-
     {
       "id": 25,
       "title": "Luxury Onyx",
@@ -362,29 +423,39 @@
       "material": "Onyx",
       "description": "Premium onyx tile with luxury feel.",
       "image": "/images/tiles/tile_025.jpg",
-      "tags": ["onyx", "premium"],
+      "tags": [
+        "onyx",
+        "premium"
+      ],
       "inStock": true,
       "featured": true
     }
   ],
-    "hero": [
+  "newEditionTiles": [
     {
       "id": 1,
-      "image": "/images/bathroom.jpg",
-      "title": "Luxury Bathroom Design",
-      "subtitle": "Elegant tiles for modern living"
+      "title": "Marble Luxe Collection",
+      "category": "Marble"
     },
     {
       "id": 2,
-      "image": "/images/tile1.jpg",
-      "title": "Modern Tile Collection",
-      "subtitle": "Premium quality surfaces"
+      "title": "Urban Concrete Series",
+      "category": "Concrete"
     },
     {
       "id": 3,
-      "image": "/images/tile2.jpg",
-      "title": "Stylish Interiors",
-      "subtitle": "Make your home aesthetic"
+      "title": "Nature Wood Harmony",
+      "category": "Wood Finish"
+    },
+    {
+      "id": 4,
+      "title": "Royal Onyx Elite",
+      "category": "Onyx"
+    },
+    {
+      "id": 5,
+      "title": "Minimal Stone Essence",
+      "category": "Stone"
     }
   ]
 }
