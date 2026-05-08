@@ -16,7 +16,7 @@ const NewArrivals = async () => {
     return (
         <div className='bg-gray-300 py-5'>
             <div className='container mx-auto bg-blue-200 flex gap-2 border-2 border-blue-900 p-2'>
-                <button className='btn bg-linear-to-r from-[#0b1c2c] to-[#0e2a44] text-white'>New Arrivals</button>
+                <button className='btn text-lg bg-linear-to-r from-[#0b1c2c] to-[#0e2a44] text-white'>New</button>
                 <Marquee pauseOnHover={true}>
                     {
                         tiles.map((t) => (
