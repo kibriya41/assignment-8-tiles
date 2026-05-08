@@ -20,7 +20,7 @@ const NewArrivals = async () => {
                 <Marquee pauseOnHover={true}>
                     {
                         tiles.map((t) => (
-                            <p key={t.id} className='mx-4 flex items-center text-blue-700'><FaStar color='gold' />
+                            <p key={t.id} className='mx-4 flex items-center text-blue-700'><FaStar size={20} color='gold' />
                                 {t.title} <span className='px-3 flex items-center'><TbCategory />
                                     : {t.category}</span> </p>
 
