@@ -19,7 +19,7 @@ const Navbar = () => {
                 <div className="navbar-center lg:flex">
                     <ul className="menu menu-horizontal px-1 rounded-none">
                         <li className='text-gray-700 font-semibold'><NavLink href={"/"}>Home</NavLink></li>
-                        <li className='text-gray-700 font-semibold'><NavLink href={"/tiles"}>All Tile</NavLink></li>
+                        <li className='text-gray-700 font-semibold'><NavLink href={"/allTile"}>All Tile</NavLink></li>
                         <li className='text-gray-700 font-semibold'><NavLink href={"/profile"}>My Profile</NavLink></li>
                        
                     </ul>
