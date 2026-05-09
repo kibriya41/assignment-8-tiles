@@ -6,7 +6,7 @@ import hero from "@/assets/Hero-image-2.jpg";
 
 const Hero = () => {
   return (
-    <section className="relative h-screen w-full flex items-center overflow-hidden">
+    <section className="relative h-[65vh] w-full flex items-center overflow-hidden">
 
       {/* Background Image */}
       <motion.div
@@ -16,7 +16,7 @@ const Hero = () => {
         className="absolute inset-0"
       >
         <Image
-          src={hero}
+          src={"https://images.unsplash.com/photo-1635321350281-e2a91ecffd00?q=80&w=2023&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
           alt="Hero Background"
           fill
           priority
