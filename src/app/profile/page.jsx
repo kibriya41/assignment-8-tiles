@@ -68,14 +68,10 @@ const Profile = () => {
 
               {/* Verification */}
               <div>
-                {user?.emailVerified ? (
+                {user?.emailVerified && (
                   <div className="badge badge-success gap-2 p-4">
                     <FaCheckCircle />
                     Verified Account
-                  </div>
-                ) : (
-                  <div className="badge badge-warning gap-2 p-4">
-                    Unverified Account
                   </div>
                 )}
               </div>
@@ -150,10 +146,7 @@ const Profile = () => {
               </h2>
 
               <p className="text-slate-600 leading-relaxed">
-                This profile information is
-                dynamically loaded from your
-                MongoDB database using Better
-                Auth authentication system.
+               
               </p>
             </div>
           </div>
