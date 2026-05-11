@@ -21,7 +21,7 @@ const AllTiles = () => {
 
   // ✅ Fetch tiles from your server
   useEffect(() => {
-    fetch("http://localhost:4000/tiles")
+    fetch("https://tiles-json-data-1.onrender.com/tiles")
       .then((res) => res.json())
       .then((data) => {
         setTiles(data);

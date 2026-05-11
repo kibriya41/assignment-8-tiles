@@ -5,7 +5,7 @@ import { TbCategory } from 'react-icons/tb';
 
 
 const getNewEditionTiles = async () => {
-    const res = await fetch('http://localhost:4000/newEditionTiles');
+    const res = await fetch('https://tiles-json-data-1.onrender.com/newEditionTiles');
     return res.json();
 }
 

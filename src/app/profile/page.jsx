@@ -28,7 +28,7 @@ const Profile = () => {
   const user = session?.user;
 
   return (
-    <div className="min-h-screen bg-slate-100 py-10 px-4">
+    <div className="min-h-screen bg-gray-200 py-10 px-4">
       <div className="max-w-4xl mx-auto">
         <div className="bg-white rounded-3xl shadow-lg overflow-hidden">
           {/* Cover */}

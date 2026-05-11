@@ -4,10 +4,9 @@ import Link from 'next/link';
 import React from 'react';
 import { FaRegCircleUser } from 'react-icons/fa6';
 import { FiLogIn } from 'react-icons/fi';
-import { authClient } from "@/lib/auth-client"
 import Image from 'next/image';
-import { span } from 'framer-motion/client';
 import { MdOutlineLogout } from 'react-icons/md';
+import { authClient } from '@/lib/auth-client';
 
 const NavUser = () => {
     const { data: session } = authClient.useSession();

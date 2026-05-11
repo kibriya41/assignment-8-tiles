@@ -164,7 +164,7 @@ const LoginPage = () => {
           {/* Login Button */}
           <button
             disabled={loading}
-            className="btn w-full bg-slate-800 text-white hover:bg-slate-700"
+            className="btn w-full bg-blue-500 text-white hover:bg-blue-700"
           >
             {loading ? (
               <span className="loading loading-spinner loading-sm"></span>
