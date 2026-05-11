@@ -8,9 +8,7 @@ const TileDetails = async ({ params }) => {
     const { id } = await params;
 
     const tile = await getTileDetails(id);
-    console.log(tile, "tiles")
 
-  
 
     return (
         <div className="bg-gray-200" >

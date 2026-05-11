@@ -43,13 +43,13 @@ const RegisterPage = () => {
 
       // Error Handling
       if (error) {
-        alert(error.message);
+        toast.error(error.message);
         return;
       }
 
       // Success
       if (res) {
-        alert("Signup successful");
+        toast.success("Register successful");
 
         // Reset Form
         reset();

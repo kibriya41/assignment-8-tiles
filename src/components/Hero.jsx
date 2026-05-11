@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import hero from "@/assets/Hero-image-2.jpg";
 
 const Hero = () => {
   return (

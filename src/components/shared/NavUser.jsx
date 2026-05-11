@@ -11,10 +11,6 @@ import { authClient } from '@/lib/auth-client';
 const NavUser = () => {
     const { data: session } = authClient.useSession();
     const user = session?.user;
-    console.log(user)
-    console.log(user?.image);
-
-
     return (
         <div className="navbar-end text-gray-700">
             {user ? (<><span>

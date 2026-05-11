@@ -2,7 +2,7 @@ import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
-import { Toaster } from "react-hot-toast";
+import { ToastContainer } from "react-toastify";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -23,19 +23,20 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      data-theme="light"
-      className={`h-full antialiased`}
-    >
+    <html lang="en" data-theme="light" className={`h-full antialiased`}>
       <body className={`${inter.className} min-h-full flex flex-col`}>
         <Navbar />
         <main>{children}</main>
         <Footer />
 
-        <Toaster
-          position="top-right"
-          reverseOrder={false}
+        <ToastContainer
+          position="top-center"
+          autoClose={1000}
+          hideProgressBar={false}
+          newestOnTop={true}
+          closeOnClick
+          pauseOnHover
+          theme="light"
         />
       </body>
     </html>

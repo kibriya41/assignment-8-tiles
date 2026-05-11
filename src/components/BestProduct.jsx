@@ -22,7 +22,8 @@ const BestProduct = async () => {
                         >
                             {/* Image */}
                             <div className="h-44 overflow-hidden">
-                                <img
+                                <Image height={200}
+                                    width={200}
                                     src={tile.image}
                                     alt={tile.title}
                                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"

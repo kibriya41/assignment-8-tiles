@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash, } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
   const {
@@ -22,7 +23,6 @@ const LoginPage = () => {
 
   // Login Function
   const handleLoginFunc = async (data) => {
-    console.log(data, "Login Data");
 
     const { email, password } = data;
 
@@ -36,18 +36,16 @@ const LoginPage = () => {
           callbackURL: "/",
         });
 
-      console.log(res);
-      console.log(error);
-
       // Error
       if (error) {
-        alert(error.message);
+        toast.error(error.message);
         return;
       }
 
       // Success
       if (res) {
-        alert("Login successful");
+        toast.success("Login Successful");
+
 
         reset();
       }
