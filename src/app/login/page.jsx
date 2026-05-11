@@ -1,190 +1,201 @@
 "use client";
 
-import { useState } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { authClient } from "@/lib/auth-client";
+import Link from "next/link";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { FaEye, FaEyeSlash, } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 
-export default function LoginForm() {
-    const [showPassword, setShowPassword] = useState(false);
-    const [formData, setFormData] = useState({
-        email: "",
-        password: "",
-    });
+const LoginPage = () => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
-    const [errors, setErrors] = useState({});
-    const [loading, setLoading] = useState(false);
+  const [isShowPassword, setIsShowPassword] =
+    useState(false);
 
-    // Handle Input Change
-    const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
+  const [loading, setLoading] = useState(false);
+
+  // Login Function
+  const handleLoginFunc = async (data) => {
+    console.log(data, "Login Data");
+
+    const { email, password } = data;
+
+    try {
+      setLoading(true);
+
+      const { data: res, error } =
+        await authClient.signIn.email({
+          email,
+          password,
+          callbackURL: "/",
         });
-    };
 
-    // Validation
-    const validate = () => {
-        let newErrors = {};
+      console.log(res);
+      console.log(error);
 
-        // Email Validation
-        if (!formData.email) {
-            newErrors.email = "Email is required";
-        } else if (
-            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.email)
-        ) {
-            newErrors.email = "Enter a valid email";
-        }
+      // Error
+      if (error) {
+        alert(error.message);
+        return;
+      }
 
-        // Password Validation
-        if (!formData.password) {
-            newErrors.password = "Password is required";
-        } else if (formData.password.length < 8) {
-            newErrors.password = "Password must be at least 8 characters";
-        } else if (!/[A-Z]/.test(formData.password)) {
-            newErrors.password =
-                "Password must contain at least 1 uppercase letter";
-        } else if (!/[0-9]/.test(formData.password)) {
-            newErrors.password = "Password must contain at least 1 number";
-        }
+      // Success
+      if (res) {
+        alert("Login successful");
 
-        setErrors(newErrors);
+        reset();
+      }
+    } catch (err) {
+      console.log(err);
 
-        return Object.keys(newErrors).length === 0;
-    };
+      alert("Something went wrong");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    // Submit Form
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+  return (
+    <div className="container mx-auto min-h-screen flex justify-center items-center bg-slate-100 px-4">
+      <div className="w-full max-w-md p-6 rounded-2xl bg-white shadow-lg">
+        {/* Heading */}
+        <div className="text-center mb-6">
+          <h2 className="font-bold text-3xl">
+            Welcome Back
+          </h2>
 
-        if (!validate()) return;
-
-        setLoading(true);
-
-        // Fake API Call
-        setTimeout(() => {
-            console.log(formData, "form data")
-
-            setLoading(false);
-
-            // Reset Form
-            setFormData({
-                email: "",
-                password: "",
-            });
-        }, 1500);
-    };
-
-    return (
-        <div className="min-h-screen flex items-center justify-center bg-base-200 px-4">
-            <div className="card w-full max-w-md bg-base-100 shadow-2xl">
-                <div className="card-body">
-                    {/* Title */}
-                    <div className="text-center mb-4">
-                        <h1 className="text-3xl font-bold">Welcome Back</h1>
-                        <p className="text-base-content/70 mt-1">
-                            Login to your account
-                        </p>
-                    </div>
-
-                    {/* Form */}
-                    <form onSubmit={handleSubmit} className="space-y-4">
-                        {/* Email */}
-                        <div>
-                            <label className="label">
-                                <span className="label-text font-medium">Email</span>
-                            </label>
-
-                            <input
-                                type="email"
-                                name="email"
-                                placeholder="john@example.com"
-                                className={`input input-bordered w-full ${errors.email ? "input-error" : ""
-                                    }`}
-                                value={formData.email}
-                                onChange={handleChange}
-                            />
-
-                            {errors.email && (
-                                <p className="text-error text-sm mt-1">{errors.email}</p>
-                            )}
-                        </div>
-
-                        {/* Password */}
-                        <div>
-                            <label className="label">
-                                <span className="label-text font-medium">Password</span>
-                            </label>
-
-                            <div className="relative">
-                                <input
-                                    type={showPassword ? "text" : "password"}
-                                    name="password"
-                                    placeholder="Enter your password"
-                                    className={`input input-bordered w-full pr-12 ${errors.password ? "input-error" : ""
-                                        }`}
-                                    value={formData.password}
-                                    onChange={handleChange}
-                                />
-
-                                {/* Show / Hide Password */}
-                                <button
-                                    type="button"
-                                    onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute right-4 top-1/2 -translate-y-1/2 text-lg"
-                                >
-                                    {showPassword ? <FaEyeSlash /> : <FaEye />}
-                                </button>
-                            </div>
-
-                            {errors.password && (
-                                <p className="text-error text-sm mt-1">
-                                    {errors.password}
-                                </p>
-                            )}
-                        </div>
-
-                        {/* Forgot Password */}
-                        <div className="text-right">
-                            <a href="#" className="link link-hover text-sm text-primary">
-                                Forgot password?
-                            </a>
-                        </div>
-
-                        {/* Submit Button */}
-                        <button
-                            type="submit"
-                            className={`btn btn-primary w-full ${loading ? "btn-disabled" : ""
-                                }`}
-                        >
-                            {loading ? (
-                                <span className="loading loading-spinner loading-sm"></span>
-                            ) : (
-                                "Login"
-                            )}
-                        </button>
-
-                        {/* Divider */}
-                        <div className="divider">OR</div>
-
-                        {/* Google Login */}
-                        <button
-                            type="button"
-                            className="btn btn-outline w-full"
-                        ><FcGoogle size={20} />
-
-                            Continue with Google
-                        </button>
-                    </form>
-
-                    {/* Signup */}
-                    <p className="text-center text-sm mt-4">
-                        Don&apos;t have an account?{" "}
-                        <a href="/register" className="text-primary font-semibold">
-                            Sign Up
-                        </a>
-                    </p>
-                </div>
-            </div>
+          <p className="text-gray-500 mt-1">
+            Login to your account
+          </p>
         </div>
-    );
-}
+
+        {/* Form */}
+        <form
+          className="space-y-4"
+          onSubmit={handleSubmit(
+            handleLoginFunc
+          )}
+        >
+          {/* Email */}
+          <fieldset className="fieldset">
+            <legend className="fieldset-legend">
+              Email
+            </legend>
+
+            <input
+              type="email"
+              className="input input-bordered w-full"
+              placeholder="Enter your email"
+              {...register("email", {
+                required:
+                  "Email field is required",
+              })}
+            />
+
+            {errors.email && (
+              <p className="text-red-500 text-sm">
+                {errors.email.message}
+              </p>
+            )}
+          </fieldset>
+
+          {/* Password */}
+          <fieldset className="fieldset">
+            <legend className="fieldset-legend">
+              Password
+            </legend>
+
+            {/* IMPORTANT */}
+            <div className="relative w-full">
+              <input
+                type={
+                  isShowPassword
+                    ? "text"
+                    : "password"
+                }
+                className="input input-bordered w-full pr-12"
+                placeholder="Enter your password"
+                {...register("password", {
+                  required:
+                    "Password field is required",
+                })}
+              />
+
+              {/* Fixed Eye Icon */}
+              <button
+                type="button"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500"
+                onClick={() =>
+                  setIsShowPassword(
+                    !isShowPassword
+                  )
+                }
+              >
+                {isShowPassword ? (
+                  <FaEyeSlash size={18} />
+                ) : (
+                  <FaEye size={18} />
+                )}
+              </button>
+            </div>
+
+            {errors.password && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.password.message}
+              </p>
+            )}
+          </fieldset>
+
+          {/* Forgot Password */}
+          <div className="text-right">
+            <Link
+              href="/forgot-password"
+              className="text-sm text-primary hover:underline"
+            >
+              Forgot password?
+            </Link>
+          </div>
+
+          {/* Login Button */}
+          <button
+            disabled={loading}
+            className="btn w-full bg-slate-800 text-white hover:bg-slate-700"
+          >
+            {loading ? (
+              <span className="loading loading-spinner loading-sm"></span>
+            ) : (
+              "Login"
+            )}
+          </button>
+        </form>
+
+        {/* Divider */}
+        <div className="divider">OR</div>
+
+        {/* Google Login */}
+        <button className="btn btn-outline w-full">
+          <FcGoogle size={20} />
+          Continue with Google
+        </button>
+
+        {/* Register Link */}
+        <p className="text-center text-sm mt-5">
+          Don&apos;t have an account?{" "}
+          <Link
+            href="/register"
+            className="text-primary font-semibold"
+          >
+            Register
+          </Link>
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default LoginPage;

@@ -1,242 +1,253 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
-import { useState } from "react";
-import {
-    FaEye,
-    FaEyeSlash
-} from "react-icons/fa";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { FaEye, FaEyeSlash, } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 
-export default function RegisterPage() {
-    const [showPassword, setShowPassword] =
-        useState(false);
+const RegisterPage = () => {
+  const router = useRouter();
 
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        photo: "",
-        password: "",
-    });
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
-    const [errors, setErrors] = useState({});
+  const [isShowPassword, setIsShowPassword] =
+    useState(false);
 
-    // Handle Input Change
-    const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
+  const [loading, setLoading] = useState(false);
+
+  // Register Function
+  const handleRegisterFunc = async (data) => {
+
+    const { email, name, photo, password } =
+      data;
+
+    try {
+      setLoading(true);
+
+      const { data: res, error } =
+        await authClient.signUp.email({
+          name,
+          email,
+          password,
+          image: photo,
+          callbackURL: "/",
         });
-    };
 
-    // Validation
-    const validate = () => {
-        let newErrors = {};
+      // Error Handling
+      if (error) {
+        alert(error.message);
+        return;
+      }
 
-        if (!formData.name.trim()) {
-            newErrors.name = "Name is required";
-        }
-
-        if (!formData.email) {
-            newErrors.email = "Email is required";
-        }
-
-        if (!formData.photo) {
-            newErrors.photo = "Photo URL is required";
-        }
-
-        if (!formData.password) {
-            newErrors.password = "Password is required";
-        } else if (formData.password.length < 6) {
-            newErrors.password =
-                "Password must be at least 6 characters";
-        }
-
-        setErrors(newErrors);
-
-        return Object.keys(newErrors).length === 0;
-    };
-
-    // Submit Form
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        if (!validate()) return;
-
-        console.log("Register Data:", formData);
-
-        alert("Registration Successful");
+      // Success
+      if (res) {
+        alert("Signup successful");
 
         // Reset Form
-        setFormData({
-            name: "",
-            email: "",
-            photo: "",
-            password: "",
-        });
-    };
+        reset();
 
-    return (
-        <div className="min-h-screen flex items-center justify-center bg-base-200 px-4">
-            <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
-                {/* Header */}
-                <div className="text-center mb-6">
-                    <h1 className="text-3xl font-bold text-gray-800">
-                        Create Account
-                    </h1>
+        // Redirect to Homepage
+        router.push("/");
+      }
+    } catch (err) {
+      console.log(err);
 
-                    <p className="text-sm text-gray-500 mt-1">
-                        Register to get started
-                    </p>
-                </div>
+      alert("Something went wrong");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-                {/* Form */}
-                <form
-                    onSubmit={handleSubmit}
-                    className="space-y-4"
-                >
-                    {/* Name */}
-                    <div>
-                        <label className="text-sm font-semibold text-gray-700 block mb-1">
-                            Name
-                        </label>
+  return (
+    <div className="container mx-auto min-h-screen flex justify-center items-center bg-slate-100 px-4">
+      <div className="w-full max-w-md p-6 rounded-2xl bg-white shadow-lg">
+        {/* Heading */}
+        <div className="text-center mb-6">
+          <h2 className="font-bold text-3xl">
+            Create Account
+          </h2>
 
-                        <input
-                            type="text"
-                            name="name"
-                            placeholder="Enter your name"
-                            className="input input-bordered w-full"
-                            value={formData.name}
-                            onChange={handleChange}
-                        />
-
-                        {errors.name && (
-                            <p className="text-red-500 text-sm mt-1">
-                                {errors.name}
-                            </p>
-                        )}
-                    </div>
-
-                    {/* Email */}
-                    <div>
-                        <label className="text-sm font-semibold text-gray-700 block mb-1">
-                            Email
-                        </label>
-
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="Enter your email"
-                            className="input input-bordered w-full"
-                            value={formData.email}
-                            onChange={handleChange}
-                        />
-
-                        {errors.email && (
-                            <p className="text-red-500 text-sm mt-1">
-                                {errors.email}
-                            </p>
-                        )}
-                    </div>
-
-                    {/* Photo URL */}
-                    <div>
-                        <label className="text-sm font-semibold text-gray-700 block mb-1">
-                            Photo URL (Link)
-                        </label>
-
-                        <input
-                            type="text"
-                            name="photo"
-                            placeholder="Enter photo URL"
-                            className="input input-bordered w-full"
-                            value={formData.photo}
-                            onChange={handleChange}
-                        />
-
-                        {errors.photo && (
-                            <p className="text-red-500 text-sm mt-1">
-                                {errors.photo}
-                            </p>
-                        )}
-                    </div>
-
-                    {/* Password */}
-                    <div>
-                        <label className="text-sm font-semibold text-gray-700 block mb-1">
-                            Password
-                        </label>
-
-                        <div className="relative">
-                            <input
-                                type={
-                                    showPassword ? "text" : "password"
-                                }
-                                name="password"
-                                placeholder="Create a password"
-                                className="input input-bordered w-full pr-12"
-                                value={formData.password}
-                                onChange={handleChange}
-                            />
-                            <p className="text-xs text-base-content/60 mt-1">
-                                Must be 8+ characters, 1 uppercase letter & 1 number
-                            </p>
-
-                            <button
-                                type="button"
-                                onClick={() =>
-                                    setShowPassword(!showPassword)
-                                }
-                                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500"
-                            >
-                                {showPassword ? (
-                                    <FaEyeSlash />
-                                ) : (
-                                    <FaEye />
-                                )}
-                            </button>
-                        </div>
-
-                        {errors.password && (
-                            <p className="text-red-500 text-sm mt-1">
-                                {errors.password}
-                            </p>
-                        )}
-                    </div>
-
-                    {/* Register Button */}
-                    <button
-                        type="submit"
-                        className="btn btn-primary w-full mt-2"
-                    >
-                        Register
-                    </button>
-                </form>
-
-                {/* Divider */}
-                <div className="divider text-sm text-gray-400">
-                    or
-                </div>
-
-                {/* Google Button */}
-                <button className="btn btn-outline w-full">
-                    <FcGoogle size={20} />
-
-
-                    Continue with Google
-                </button>
-
-                {/* Login Link */}
-                <p className="text-center text-sm text-gray-500 mt-5">
-                    Already have an account?{" "}
-                    <Link
-                        href="/login"
-                        className="text-primary font-semibold"
-                    >
-                        Login
-                    </Link>
-                </p>
-            </div>
+          <p className="text-gray-500 mt-1">
+            Register to get started
+          </p>
         </div>
-    );
-}
+
+        {/* Form */}
+        <form
+          className="space-y-4"
+          onSubmit={handleSubmit(
+            handleRegisterFunc
+          )}
+        >
+          {/* Name */}
+          <fieldset className="fieldset">
+            <legend className="fieldset-legend">
+              Name
+            </legend>
+
+            <input
+              type="text"
+              className="input input-bordered w-full"
+              placeholder="Enter your name"
+              {...register("name", {
+                required:
+                  "Name field is required",
+              })}
+            />
+
+            {errors.name && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.name.message}
+              </p>
+            )}
+          </fieldset>
+
+          {/* Email */}
+          <fieldset className="fieldset">
+            <legend className="fieldset-legend">
+              Email
+            </legend>
+
+            <input
+              type="email"
+              className="input input-bordered w-full"
+              placeholder="Enter your email"
+              {...register("email", {
+                required:
+                  "Email field is required",
+                pattern: {
+                  value:
+                    /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message:
+                    "Please enter a valid email",
+                },
+              })}
+            />
+
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.email.message}
+              </p>
+            )}
+          </fieldset>
+
+          {/* Photo URL */}
+          <fieldset className="fieldset">
+            <legend className="fieldset-legend">
+              Photo URL
+            </legend>
+
+            <input
+              type="text"
+              className="input input-bordered w-full"
+              placeholder="Enter photo URL"
+              {...register("photo", {
+                required:
+                  "Photo URL field is required",
+              })}
+            />
+
+            {errors.photo && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.photo.message}
+              </p>
+            )}
+          </fieldset>
+
+          {/* Password */}
+          <fieldset className="fieldset">
+            <legend className="fieldset-legend">
+              Password
+            </legend>
+
+            <div className="relative w-full">
+              <input
+                type={
+                  isShowPassword
+                    ? "text"
+                    : "password"
+                }
+                className="input input-bordered w-full pr-12"
+                placeholder="Create a password"
+                {...register("password", {
+                  required:
+                    "Password field is required",
+                  minLength: {
+                    value: 6,
+                    message:
+                      "Password must be at least 6 characters",
+                  },
+                })}
+              />
+
+              {/* Eye Icon */}
+              <button
+                type="button"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500"
+                onClick={() =>
+                  setIsShowPassword(
+                    !isShowPassword
+                  )
+                }
+              >
+                {isShowPassword ? (
+                  <FaEyeSlash size={18} />
+                ) : (
+                  <FaEye size={18} />
+                )}
+              </button>
+            </div>
+
+            {errors.password && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.password.message}
+              </p>
+            )}
+          </fieldset>
+
+          {/* Register Button */}
+          <button
+            disabled={loading}
+            className="btn w-full bg-slate-800 text-white hover:bg-slate-700"
+          >
+            {loading ? (
+              <span className="loading loading-spinner loading-sm"></span>
+            ) : (
+              "Register"
+            )}
+          </button>
+        </form>
+
+        {/* Divider */}
+        <div className="divider">OR</div>
+
+        {/* Google Button */}
+        <button className="btn btn-outline w-full">
+          <FcGoogle size={20} />
+          Continue with Google
+        </button>
+
+        {/* Login Link */}
+        <p className="text-center text-sm mt-5">
+          Already have an account?{" "}
+          <Link
+            href="/login"
+            className="text-primary font-semibold"
+          >
+            Login
+          </Link>
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default RegisterPage;

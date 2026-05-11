@@ -4,6 +4,7 @@ import { FaRegCircleUser } from 'react-icons/fa6';
 import { FiLogIn } from 'react-icons/fi';
 import NavLink from './NavLink';
 import { SiMaptiler } from 'react-icons/si';
+import NavUser from './NavUser';
 
 const Navbar = () => {
     return (
@@ -24,10 +25,7 @@ const Navbar = () => {
                        
                     </ul>
                 </div>
-                <div className="navbar-end text-gray-700">
-                   <span className='mr-3'> <FaRegCircleUser size={"40"} /> </span>
-                    <Link href={"/login"} className="btn bg-blue-500 text-white"><FiLogIn />Login</Link>
-                </div>
+               <NavUser />
             </div>
         </div>
     );
