@@ -5,8 +5,9 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { FaEye, FaEyeSlash, } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-toastify";
 
 const RegisterPage = () => {
   const router = useRouter();
@@ -25,7 +26,6 @@ const RegisterPage = () => {
 
   // Register Function
   const handleRegisterFunc = async (data) => {
-
     const { email, name, photo, password } =
       data;
 
@@ -49,18 +49,22 @@ const RegisterPage = () => {
 
       // Success
       if (res) {
-        toast.success("Register successful");
+        toast.success(
+          "Registration successful 🎉"
+        );
 
         // Reset Form
         reset();
 
-        // Redirect to Homepage
-        router.push("/");
+        // Redirect after short delay
+        setTimeout(() => {
+          router.push("/");
+        }, 1500);
       }
     } catch (err) {
       console.log(err);
 
-      alert("Something went wrong");
+      toast.error("Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -69,6 +73,7 @@ const RegisterPage = () => {
   return (
     <div className="container mx-auto min-h-screen flex justify-center items-center bg-slate-100 px-4">
       <div className="w-full max-w-md p-6 rounded-2xl bg-white shadow-lg">
+
         {/* Heading */}
         <div className="text-center mb-6">
           <h2 className="font-bold text-3xl">
@@ -87,6 +92,7 @@ const RegisterPage = () => {
             handleRegisterFunc
           )}
         >
+
           {/* Name */}
           <fieldset className="fieldset">
             <legend className="fieldset-legend">

@@ -4,8 +4,9 @@ import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { FaEye, FaEyeSlash, } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
   const {
@@ -39,22 +40,22 @@ const LoginPage = () => {
       console.log(res);
       console.log(error);
 
-      // Error
+      // Error Toast
       if (error) {
-        alert(error.message);
+        toast.error(error.message);
         return;
       }
 
-      // Success
+      // Success Toast
       if (res) {
-        alert("Login successful");
+        toast.success("Login successful");
 
         reset();
       }
     } catch (err) {
       console.log(err);
 
-      alert("Something went wrong");
+      toast.error("Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -63,6 +64,7 @@ const LoginPage = () => {
   return (
     <div className="container mx-auto min-h-screen flex justify-center items-center bg-slate-100 px-4">
       <div className="w-full max-w-md p-6 rounded-2xl bg-white shadow-lg">
+
         {/* Heading */}
         <div className="text-center mb-6">
           <h2 className="font-bold text-3xl">
@@ -81,6 +83,7 @@ const LoginPage = () => {
             handleLoginFunc
           )}
         >
+
           {/* Email */}
           <fieldset className="fieldset">
             <legend className="fieldset-legend">
@@ -110,7 +113,6 @@ const LoginPage = () => {
               Password
             </legend>
 
-            {/* IMPORTANT */}
             <div className="relative w-full">
               <input
                 type={
@@ -126,7 +128,6 @@ const LoginPage = () => {
                 })}
               />
 
-              {/* Fixed Eye Icon */}
               <button
                 type="button"
                 className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500"
