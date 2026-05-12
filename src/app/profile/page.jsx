@@ -110,6 +110,7 @@ const Profile = () => {
                       User ID
                     </p>
 
+
                     <h3 className="font-semibold text-slate-800 break-all">
                       {user?.id}
                     </h3>
@@ -145,9 +146,14 @@ const Profile = () => {
                 About User
               </h2>
 
+
               <p className="text-slate-600 leading-relaxed">
-               
+                Tile Aesthetic is a modern tile marketplace
+                offering premium and stylish tile collections
+                for homes and commercial spaces. We focus on
+                quality, elegance, and customer satisfaction.
               </p>
+
             </div>
           </div>
         </div>
