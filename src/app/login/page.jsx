@@ -9,6 +9,12 @@ import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
 
 const LoginPage = () => {
+const handleGoogleLogin = async ()=>{
+  const data = await authClient.signIn.social({
+    provider: "google",
+  });
+}
+
   const {
     register,
     handleSubmit,
@@ -179,7 +185,7 @@ const LoginPage = () => {
         <div className="divider">OR</div>
 
         {/* Google Login */}
-        <button className="btn btn-outline w-full">
+        <button onClick={handleGoogleLogin} className="btn btn-outline w-full">
           <FcGoogle size={20} />
           Continue with Google
         </button>
